@@ -1,6 +1,7 @@
 import React from "react";
 import { ECardSuit } from "./constant/suit";
 import { ECardValue } from "./constant/value";
+import { StyledCardImage } from "./styled/image";
 
 export interface ICardProps {
     suit: ECardSuit,
@@ -13,9 +14,10 @@ export const Card: React.FC<ICardProps> = ({
 }) => {
     return (
         <div data-testid="card">
-            <img 
-                data-testid={`card-img-${suit}_${value}`} 
-                alt={`Card - Suit, ${suit}, Value, ${value} `}
+            <StyledCardImage
+                data-testid={`card-img-${suit}_${value}`}
+                suit={suit}
+                value={value}
             />
         </div>
     );
