@@ -15,7 +15,7 @@ export const StyledCardImage = styled(
     },
 )<IStyledCardImageProps>(
     {
-        backgroundImage: `url(${require('../../asset/cards.png')})`,
+        backgroundImage: `url(${require('../../../asset/cards.png')})`,
         width: 71,
         height: 97,
     },
