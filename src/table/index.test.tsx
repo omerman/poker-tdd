@@ -1,12 +1,12 @@
 import React from 'react';
 import { render } from '@testing-library/react'
-import { Board } from '.';
+import { Table } from '.';
 
 it('renders without crashing', () => {
-  render(<Board />);
+  render(<Table />);
 });
 
 it('renders user hand', async () => {
-  const { findByTestId } = render(<Board />);
+  const { findByTestId } = render(<Table />);
   await findByTestId('hand');
 });

@@ -6,7 +6,7 @@ it('renders without crashing', () => {
   render(<App />);
 });
 
-it('renders board', async () => {
+it('renders table', async () => {
   const { findByTestId } = render(<App />);
-  await findByTestId('board');
+  await findByTestId('table');
 });
