@@ -1,13 +1,20 @@
 import React from "react";
-import { CardView } from "../card/view";
-import { ECardSuit } from "../card/constant/suit";
-import { ECardValue } from "../card/constant/value";
+import { Card } from "../card";
+import { CardStore } from "../card/store";
 
-export const Hand: React.FC = () => {
+export interface IHandProps {
+    firstCardStore: CardStore,
+    secondCardStore: CardStore,
+}
+
+export const Hand: React.FC<IHandProps> = ({
+    firstCardStore,
+    secondCardStore,
+}) => {
     return (
         <div data-testid="hand">
-            <CardView suit={ECardSuit.DIAMONDS} value={ECardValue.TWO} />
-            <CardView suit={ECardSuit.DIAMONDS} value={ECardValue.TWO} />
+            <Card store={firstCardStore} />
+            <Card store={secondCardStore} />
         </div>
     );
 }
