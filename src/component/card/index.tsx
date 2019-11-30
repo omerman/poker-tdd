@@ -1,24 +1,15 @@
 import React from "react";
-import { ECardSuit } from "./constant/suit";
-import { ECardValue } from "./constant/value";
-import { StyledCardImage } from "./styled/image";
+import { CardStore } from "./store";
+import { CardView } from "./view";
 
 export interface ICardProps {
-    suit: ECardSuit,
-    value: ECardValue,
+    store: CardStore
 }
 
 export const Card: React.FC<ICardProps> = ({
-    suit,
-    value,
+    store,
 }) => {
     return (
-        <div data-testid="card">
-            <StyledCardImage
-                data-testid={`card-img-${suit}_${value}`}
-                suit={suit}
-                value={value}
-            />
-        </div>
+        <CardView suit={store.suit} value={store.value} />
     );
 }

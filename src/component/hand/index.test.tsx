@@ -6,7 +6,8 @@ it('renders without crashing', () => {
   render(<Hand />);
 });
 
-it('renders card', async () => {
-  const { findByTestId } = render(<Hand />);
-  await findByTestId('card');
+it('renders two cards', async () => {
+  const { findAllByTestId } = render(<Hand />);
+  const cards = await findAllByTestId('card');
+  expect(cards.length).toBe(2);
 });

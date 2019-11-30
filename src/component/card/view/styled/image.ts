@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
-import { ECardSuit } from '../constant/suit';
-import { ECardValue } from '../constant/value';
+import { ECardSuit } from '../../constant/suit';
+import { ECardValue } from '../../constant/value';
 
 export interface IStyledCardImageProps {
     suit: ECardSuit,
@@ -15,7 +15,7 @@ export const StyledCardImage = styled(
     },
 )<IStyledCardImageProps>(
     {
-        backgroundImage: `url(${require('../../../asset/cards.png')})`,
+        backgroundImage: `url(${require('../../../../asset/cards.png')})`,
         width: 71,
         height: 97,
     },
