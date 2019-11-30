@@ -57,8 +57,8 @@ it('renders second card to be king of clubs', async () => {
     />
   );
   const cards = await findAllByTestId('card');
-  const firstCard = await findByTestId(`card-img-${ECardSuit.CLUBS}_${ECardValue.KING}`);
-  expect(cards[1].contains(firstCard)).toBe(true);
+  const secondCard = await findByTestId(`card-img-${ECardSuit.CLUBS}_${ECardValue.KING}`);
+  expect(cards[1].contains(secondCard)).toBe(true);
 });
 
 it('renders second card to be king of diamonds', async () => {
@@ -69,6 +69,6 @@ it('renders second card to be king of diamonds', async () => {
     />
   );
   const cards = await findAllByTestId('card');
-  const firstCard = await findByTestId(`card-img-${ECardSuit.DIAMONDS}_${ECardValue.KING}`);
-  expect(cards[1].contains(firstCard)).toBe(true);
+  const secondCard = await findByTestId(`card-img-${ECardSuit.DIAMONDS}_${ECardValue.KING}`);
+  expect(cards[1].contains(secondCard)).toBe(true);
 });
