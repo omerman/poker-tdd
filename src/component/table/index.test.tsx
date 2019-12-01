@@ -67,4 +67,29 @@ it('renders user hand with king of clubs and king of diamonds', async () => {
   expect(cards[1].contains(secondCardImage)).toBe(true);
 });
 
+it('renders opponent hand', async () => {
+  const { queryByTestId } = render(
+    <Table
+      hand={{
+        firstCardStore: new CardStore(ECardSuit.HEARTS, ECardValue.TWO),
+        secondCardStore: new CardStore(ECardSuit.HEARTS, ECardValue.TWO),
+      }}
+      opponent
+    />
+  );
 
+  expect(queryByTestId('opponent-hand')).toBeDefined();
+});
+
+it('should not render opponent hand if no opponents exist', async () => {
+  const { queryByTestId } = render(
+    <Table
+      hand={{
+        firstCardStore: new CardStore(ECardSuit.HEARTS, ECardValue.TWO),
+        secondCardStore: new CardStore(ECardSuit.HEARTS, ECardValue.TWO),
+      }}
+    />
+  );
+
+  expect(queryByTestId('opponent-hand')).toBeNull();
+});
