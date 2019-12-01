@@ -2,13 +2,16 @@ import { computed } from 'mobx';
 import { promisedComputed } from 'computed-async-mobx';
 import { CardStore } from '../card/store';
 
+interface IGameState {
+    cards: [CardStore, CardStore],
+}
 
 export class GameStore {
-    private readonly handCardsPromise = promisedComputed<undefined | [CardStore, CardStore]>(
+    private readonly gameStatePromise = promisedComputed<undefined | IGameState>(
         undefined,
         async () => {
-            const handResponse = await fetch('api/game/hand');
-            const handCards: [CardStore, CardStore] = await handResponse.json();
+            const handResponse = await fetch('api/game/state');
+            const handCards: IGameState = await handResponse.json();
       
             return handCards;
         },
@@ -16,6 +19,17 @@ export class GameStore {
 
     @computed
     get handCards() {
-        return this.handCardsPromise.get();
+        const { gameState } = this;
+
+        if (gameState) {
+            return gameState.cards;
+        } else {
+            return undefined;
+        }
+    }
+
+    @computed
+    private get gameState() {
+        return this.gameStatePromise.get();
     }
 }

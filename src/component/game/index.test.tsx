@@ -13,20 +13,22 @@ afterEach(
   }
 );
 
-const mockHand = (
+const mockState = (
   cards: [CardStore, CardStore],
 ) => {
   fetchMock.getOnce(
-    '/api/game/hand',
+    '/api/game/state',
     200,
     {
-      response: cards
+      response: {
+        cards,
+      }
     },
   );
 }
 
 it('renders without crashing', () => {
-  mockHand([
+  mockState([
     {
       suit: ECardSuit.HEARTS,
       value: ECardValue.TWO,
@@ -40,7 +42,7 @@ it('renders without crashing', () => {
 });
 
 it('renders table', async () => {
-  mockHand([
+  mockState([
     {
       suit: ECardSuit.HEARTS,
       value: ECardValue.TWO,
@@ -60,7 +62,7 @@ it('renders table', async () => {
 });
 
 it('renders hand with king of hearts and king of clubs', async () => {
-  mockHand([
+  mockState([
     {
       suit: ECardSuit.HEARTS,
       value: ECardValue.KING,
@@ -85,7 +87,7 @@ it('renders hand with king of hearts and king of clubs', async () => {
 });
 
 it('renders hand with king of spades and king of diamonds', async () => {
-  mockHand([
+  mockState([
     {
       suit: ECardSuit.SPADES,
       value: ECardValue.KING,
