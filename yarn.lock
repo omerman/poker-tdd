@@ -2909,6 +2909,11 @@ compression@^1.5.2:
     safe-buffer "5.1.2"
     vary "~1.1.2"
 
+computed-async-mobx@^4.2.1:
+  version "4.2.1"
+  resolved "https://registry.yarnpkg.com/computed-async-mobx/-/computed-async-mobx-4.2.1.tgz#868c899f209af0bcdecaf677abd9bb50f9f39105"
+  integrity sha512-kThbGHul+3YrXWFfxRJpuHAv9CdEl/UVGI79BmMq3m6UMuWggZq3Hyp2tj1hEe3ZScokTzg+Quxk7X5cN3YKpA==
+
 concat-map@0.0.1:
   version "0.0.1"
   resolved "https://registry.yarnpkg.com/concat-map/-/concat-map-0.0.1.tgz#d8a96bd77fd68df7793a73036a3ba0d5405d477b"
@@ -6730,6 +6735,11 @@ mobx-react@^6.1.4:
   integrity sha512-wzrJF1RflhyLh8ne4FJfMbG8ZgRFmZ62b4nbyhJzwQpAmrkSnSsAWG9mIff4ffV/Q7OU+uOYf7rXvSmiuUe4cw==
   dependencies:
     mobx-react-lite "^1.4.2"
+
+mobx-utils@^5.5.2:
+  version "5.5.2"
+  resolved "https://registry.yarnpkg.com/mobx-utils/-/mobx-utils-5.5.2.tgz#3d3230067f14e9315559d2bfd31d86ec2e8999f0"
+  integrity sha512-cOlFJDWU/NHyGKvdhWqPdHmhPfeKewElAIZp5XticWIsSLGAA+4Uou3+8ookhQ/yG7qZXzvjAq90TZWXiR5+XA==
 
 mobx@^5.15.0:
   version "5.15.0"

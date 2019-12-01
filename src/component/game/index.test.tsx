@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, cleanup } from '@testing-library/react';
+import { render, cleanup, act } from '@testing-library/react';
 import { Game } from '.';
 import fetchMock from 'fetch-mock';
 import { ECardSuit } from '../card/constant/suit';
@@ -17,8 +17,8 @@ const mockHand = (
   cards: [CardStore, CardStore],
 ) => {
   fetchMock.getOnce(
-    '/api/hand', 
-    200, 
+    '/api/hand',
+    200,
     {
       response: cards
     },
@@ -51,8 +51,12 @@ it('renders table', async () => {
     }
   ]);
 
-  const { findByTestId } = render(<Game />);
-  await findByTestId('table');
+  await act(
+    async () => {
+      const { findByTestId } = render(<Game />);
+      await findByTestId('table');
+    },
+  );
 });
 
 it('renders hand with king of hearts and king of clubs', async () => {
@@ -66,13 +70,18 @@ it('renders hand with king of hearts and king of clubs', async () => {
       value: ECardValue.KING,
     }
   ]);
-  const { findByTestId, findAllByTestId } = render(<Game />);
-  const cards = await findAllByTestId('card');
-  const firstCard = await findByTestId(`card-img-${ECardSuit.HEARTS}_${ECardValue.KING}`);
-  const secondCard = await findByTestId(`card-img-${ECardSuit.CLUBS}_${ECardValue.KING}`);
 
-  expect(cards[0].contains(firstCard)).toBe(true);
-  expect(cards[1].contains(secondCard)).toBe(true);
+  await act(
+    async () => {
+      const { findByTestId, findAllByTestId } = render(<Game />);
+      const cards = await findAllByTestId('card');
+      const firstCard = await findByTestId(`card-img-${ECardSuit.HEARTS}_${ECardValue.KING}`);
+      const secondCard = await findByTestId(`card-img-${ECardSuit.CLUBS}_${ECardValue.KING}`);
+
+      expect(cards[0].contains(firstCard)).toBe(true);
+      expect(cards[1].contains(secondCard)).toBe(true);
+    },
+  );
 });
 
 it('renders hand with king of spades and king of diamonds', async () => {
@@ -86,11 +95,15 @@ it('renders hand with king of spades and king of diamonds', async () => {
       value: ECardValue.KING,
     }
   ]);
-  const { findByTestId, findAllByTestId } = render(<Game />);
-  const cards = await findAllByTestId('card');
-  const firstCard = await findByTestId(`card-img-${ECardSuit.SPADES}_${ECardValue.KING}`);
-  const secondCard = await findByTestId(`card-img-${ECardSuit.DIAMONDS}_${ECardValue.KING}`);
+  await act(
+    async () => {
+      const { findByTestId, findAllByTestId } = render(<Game />);
+      const cards = await findAllByTestId('card');
+      const firstCard = await findByTestId(`card-img-${ECardSuit.SPADES}_${ECardValue.KING}`);
+      const secondCard = await findByTestId(`card-img-${ECardSuit.DIAMONDS}_${ECardValue.KING}`);
 
-  expect(cards[0].contains(firstCard)).toBe(true);
-  expect(cards[1].contains(secondCard)).toBe(true);
+      expect(cards[0].contains(firstCard)).toBe(true);
+      expect(cards[1].contains(secondCard)).toBe(true);
+    },
+  );
 });
