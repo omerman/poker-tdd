@@ -1,9 +1,11 @@
 import React from 'react';
-import { render } from '@testing-library/react'
+import { render, cleanup } from '@testing-library/react'
 import { CardStore } from './store';
 import { ECardSuit } from './constant/suit';
 import { ECardValue } from './constant/value';
 import { Card } from '.';
+
+afterEach(cleanup);
 
 it('renders without crashing', () => {
   const store = new CardStore(

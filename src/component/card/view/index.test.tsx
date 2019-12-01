@@ -1,8 +1,10 @@
 import React from 'react';
-import { render } from '@testing-library/react'
+import { render, cleanup } from '@testing-library/react'
 import { CardView } from '.';
 import { ECardSuit } from '../constant/suit';
 import { ECardValue } from '../constant/value';
+
+afterEach(cleanup);
 
 it('renders without crashing', () => {
   render(<CardView suit={ECardSuit.HEARTS} value={ECardValue.KING} />);
