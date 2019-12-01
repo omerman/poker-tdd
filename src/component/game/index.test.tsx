@@ -17,7 +17,7 @@ const mockHand = (
   cards: [CardStore, CardStore],
 ) => {
   fetchMock.getOnce(
-    '/api/hand',
+    '/api/game/hand',
     200,
     {
       response: cards

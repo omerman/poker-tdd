@@ -7,7 +7,7 @@ export class GameStore {
     private readonly handCardsPromise = promisedComputed<undefined | [CardStore, CardStore]>(
         undefined,
         async () => {
-            const handResponse = await fetch('api/hand');
+            const handResponse = await fetch('api/game/hand');
             const handCards: [CardStore, CardStore] = await handResponse.json();
       
             return handCards;
