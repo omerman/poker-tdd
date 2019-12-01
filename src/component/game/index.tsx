@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Table } from '../table';
 import { CardStore } from '../card/store';
 
-export const App: React.FC = () => {
+export const Game: React.FC = () => {
   const [handCards, setHandCards] = useState<[CardStore, CardStore] | undefined>(undefined);
 
   useEffect(() => {

@@ -1,6 +1,6 @@
 import React from 'react';
 import { render, cleanup } from '@testing-library/react';
-import { App } from '.';
+import { Game } from '.';
 import fetchMock from 'fetch-mock';
 import { ECardSuit } from '../card/constant/suit';
 import { ECardValue } from '../card/constant/value';
@@ -36,7 +36,7 @@ it('renders without crashing', () => {
       value: ECardValue.TWO,
     }
   ]);
-  render(<App />);
+  render(<Game />);
 });
 
 it('renders table', async () => {
@@ -51,7 +51,7 @@ it('renders table', async () => {
     }
   ]);
 
-  const { findByTestId } = render(<App />);
+  const { findByTestId } = render(<Game />);
   await findByTestId('table');
 });
 
@@ -66,7 +66,7 @@ it('renders hand with king of hearts and king of clubs', async () => {
       value: ECardValue.KING,
     }
   ]);
-  const { findByTestId, findAllByTestId } = render(<App />);
+  const { findByTestId, findAllByTestId } = render(<Game />);
   const cards = await findAllByTestId('card');
   const firstCard = await findByTestId(`card-img-${ECardSuit.HEARTS}_${ECardValue.KING}`);
   const secondCard = await findByTestId(`card-img-${ECardSuit.CLUBS}_${ECardValue.KING}`);
@@ -86,7 +86,7 @@ it('renders hand with king of spades and king of diamonds', async () => {
       value: ECardValue.KING,
     }
   ]);
-  const { findByTestId, findAllByTestId } = render(<App />);
+  const { findByTestId, findAllByTestId } = render(<Game />);
   const cards = await findAllByTestId('card');
   const firstCard = await findByTestId(`card-img-${ECardSuit.SPADES}_${ECardValue.KING}`);
   const secondCard = await findByTestId(`card-img-${ECardSuit.DIAMONDS}_${ECardValue.KING}`);
