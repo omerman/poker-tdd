@@ -1,6 +1,7 @@
 import React from "react";
 import { Hand, IHandProps } from "../hand";
 import { OpponentHand } from "../opponent-hand";
+import { StyledRoot } from "./styled/root";
 
 export interface ITableProps {
     hand: IHandProps,
@@ -12,9 +13,9 @@ export const Table: React.FC<ITableProps> = ({
     opponent,
 }) => {
     return (
-        <div data-testid="table">
-            <Hand {...hand} />
+        <StyledRoot data-testid="table">
             { opponent && <OpponentHand /> }
-        </div>
+            <Hand {...hand} />
+        </StyledRoot>
     );
 }
