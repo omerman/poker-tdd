@@ -18,6 +18,7 @@ export const Game: React.FC = () => {
               firstCardStore: store.handCards[0],
               secondCardStore: store.handCards[1],
             }} 
+            opponent={store.opponent}
           />
         </div>
       );

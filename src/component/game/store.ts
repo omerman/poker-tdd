@@ -4,6 +4,7 @@ import { CardStore } from '../card/store';
 
 interface IGameState {
     cards: [CardStore, CardStore],
+    opponent: boolean,
 }
 
 export class GameStore {
@@ -25,6 +26,17 @@ export class GameStore {
             return gameState.cards;
         } else {
             return undefined;
+        }
+    }
+
+    @computed
+    get opponent() {
+        const { gameState } = this;
+
+        if (gameState) {
+            return gameState.opponent;
+        } else {
+            return false;
         }
     }
 
