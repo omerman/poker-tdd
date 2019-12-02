@@ -48,9 +48,10 @@ describe('Game In Progress', () => {
       ],
     });
 
+    render(<Game />);
+
     await act(
       async () => {
-        render(<Game />);
         await fetchMock.flush();
       },
     );
@@ -70,21 +71,15 @@ describe('Game In Progress', () => {
       ],
     });
     
-    let renderResult: RenderResult;
+    const { queryByTestId } = render(<Game />);
 
     await act(
       async () => {
-        renderResult = render(<Game />);
         await fetchMock.flush();
       },
     );
 
-    act(
-      () => {
-        const { queryByTestId } = renderResult;
-        expect(queryByTestId('table')).not.toBeNull();
-      },
-    );
+    expect(queryByTestId('table')).not.toBeNull();
   });
   
   it('should render a hand with king of hearts and king of clubs', async () => {
@@ -101,26 +96,20 @@ describe('Game In Progress', () => {
       ],
     });
   
-    let renderResult: RenderResult;
+    const { queryByTestId, queryAllByTestId } =  render(<Game />);
 
     await act(
       async () => {
-        renderResult = render(<Game />);
         await fetchMock.flush();
       },
     );
 
-    act(
-      () => {
-        const { queryByTestId, queryAllByTestId } = renderResult;
-        const cards = queryAllByTestId('card');
-        const firstCard = queryByTestId(`card-img-${ECardSuit.HEARTS}_${ECardValue.KING}`);
-        const secondCard = queryByTestId(`card-img-${ECardSuit.CLUBS}_${ECardValue.KING}`);
-  
-        expect(cards[0].contains(firstCard)).toBe(true);
-        expect(cards[1].contains(secondCard)).toBe(true);
-      },
-    );
+    const cards = queryAllByTestId('card');
+    const firstCard = queryByTestId(`card-img-${ECardSuit.HEARTS}_${ECardValue.KING}`);
+    const secondCard = queryByTestId(`card-img-${ECardSuit.CLUBS}_${ECardValue.KING}`);
+
+    expect(cards[0].contains(firstCard)).toBe(true);
+    expect(cards[1].contains(secondCard)).toBe(true);
   });
   
   it('should render a hand with king of spades and king of diamonds', async () => {
@@ -137,26 +126,20 @@ describe('Game In Progress', () => {
       ],
     });
 
-    let renderResult: RenderResult;
+    const { queryByTestId, queryAllByTestId } = render(<Game />);
 
     await act(
       async () => {
-        renderResult = render(<Game />);
         await fetchMock.flush();
       },
     );
 
-    act(
-      () => {
-        const { queryByTestId, queryAllByTestId } = renderResult;
-        const cards = queryAllByTestId('card');
-        const firstCard = queryByTestId(`card-img-${ECardSuit.SPADES}_${ECardValue.KING}`);
-        const secondCard = queryByTestId(`card-img-${ECardSuit.DIAMONDS}_${ECardValue.KING}`);
+    const cards = queryAllByTestId('card');
+    const firstCard = queryByTestId(`card-img-${ECardSuit.SPADES}_${ECardValue.KING}`);
+    const secondCard = queryByTestId(`card-img-${ECardSuit.DIAMONDS}_${ECardValue.KING}`);
 
-        expect(cards[0].contains(firstCard)).toBe(true);
-        expect(cards[1].contains(secondCard)).toBe(true);
-      },
-    );
+    expect(cards[0].contains(firstCard)).toBe(true);
+    expect(cards[1].contains(secondCard)).toBe(true);
   });
   
   it('should render opponent', async () => {
@@ -174,21 +157,15 @@ describe('Game In Progress', () => {
       opponent: true,
     });
 
-    let renderResult: RenderResult;
+    const { queryByTestId } = render(<Game />);
 
     await act(
       async () => {
-        renderResult = render(<Game />);
         await fetchMock.flush();
       },
     );
     
-    act(
-      () => {
-        const { queryByTestId } = renderResult;
-        expect(queryByTestId('opponent-hand')).not.toBeNull();
-      }
-    );
+    expect(queryByTestId('opponent-hand')).not.toBeNull();
   });
   
   it('should render opponent', async () => {
@@ -206,20 +183,14 @@ describe('Game In Progress', () => {
       opponent: false,
     });
 
-    let renderResult: RenderResult;
+    const { queryByTestId } = render(<Game />);
 
     await act(
       async () => {
-        renderResult = render(<Game />);
         await fetchMock.flush();
       },
     );
     
-    act(
-      () => {
-        const { queryByTestId } = renderResult;
-        expect(queryByTestId('opponent-hand')).toBeNull();
-      }
-    );
+    expect(queryByTestId('opponent-hand')).toBeNull();
   });
 });
