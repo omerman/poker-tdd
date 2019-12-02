@@ -1,6 +1,7 @@
 import React from "react";
 import { Card } from "../card";
 import { CardStore } from "../card/store";
+import { StyledRoot } from "./styled/root";
 
 export interface IHandProps {
     firstCardStore: CardStore,
@@ -12,9 +13,9 @@ export const Hand: React.FC<IHandProps> = ({
     secondCardStore,
 }) => {
     return (
-        <div data-testid="hand">
+        <StyledRoot data-testid="hand">
             <Card store={firstCardStore} />
             <Card store={secondCardStore} />
-        </div>
+        </StyledRoot>
     );
 }
