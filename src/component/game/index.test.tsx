@@ -79,7 +79,7 @@ describe('Game In Progress', () => {
       },
     );
 
-    expect(queryByTestId('table')).not.toBeNull();
+    expect(queryByTestId('table')).toBeTruthy();
   });
   
   it('should render a hand with king of hearts and king of clubs', async () => {
@@ -165,7 +165,7 @@ describe('Game In Progress', () => {
       },
     );
     
-    expect(queryByTestId('opponent-hand')).not.toBeNull();
+    expect(queryByTestId('opponent-hand')).toBeTruthy();
   });
   
   it('should render opponent', async () => {

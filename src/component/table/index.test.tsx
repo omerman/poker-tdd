@@ -78,7 +78,7 @@ it('renders opponent hand', async () => {
     />
   );
 
-  expect(queryByTestId('opponent-hand')).toBeDefined();
+  expect(queryByTestId('opponent-hand')).toBeTruthy();
 });
 
 it('should not render opponent hand if no opponents exist', async () => {
